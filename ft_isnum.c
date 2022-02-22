@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dha <dha@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 01:02:48 by dha               #+#    #+#             */
-/*   Updated: 2022/02/19 14:42:09 by dha              ###   ########seoul.kr  */
+/*   Created: 2022/02/10 16:49:30 by dha               #+#    #+#             */
+/*   Updated: 2022/02/10 19:34:38 by dha              ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_isnum(const char *s)
 {
-	size_t			i;
-	unsigned char	*tmp_s1;
-	unsigned char	*tmp_s2;
+	int	i;
 
-	tmp_s1 = (unsigned char *) s1;
-	tmp_s2 = (unsigned char *) s2;
-	if (n == 0)
-		return (0);
 	i = 0;
-	while (i < n && !(tmp_s1[i] == '\0' && tmp_s2[i] == '\0'))
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	if (s[i] == '\0')
+		return (0);
+	while (s[i] != '\0')
 	{
-		if (tmp_s1[i] != tmp_s2[i])
-			return (tmp_s1[i] - tmp_s2[i]);
+		if (!ft_isdigit(s[i]))
+			return (0);
 		i++;
 	}
-	return (tmp_s1[i] - tmp_s2[i]);
+	return (1);
 }

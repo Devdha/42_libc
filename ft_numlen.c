@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dha <dha@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 01:02:48 by dha               #+#    #+#             */
-/*   Updated: 2022/02/19 14:42:09 by dha              ###   ########seoul.kr  */
+/*   Created: 2022/02/10 16:36:10 by dha               #+#    #+#             */
+/*   Updated: 2022/02/10 16:47:44 by dha              ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_numlen(long long n)
 {
-	size_t			i;
-	unsigned char	*tmp_s1;
-	unsigned char	*tmp_s2;
+	int	len;
 
-	tmp_s1 = (unsigned char *) s1;
-	tmp_s2 = (unsigned char *) s2;
 	if (n == 0)
-		return (0);
-	i = 0;
-	while (i < n && !(tmp_s1[i] == '\0' && tmp_s2[i] == '\0'))
+		return (1);
+	len = 0;
+	while (n != 0)
 	{
-		if (tmp_s1[i] != tmp_s2[i])
-			return (tmp_s1[i] - tmp_s2[i]);
-		i++;
+		len++;
+		n /= 10;
 	}
-	return (tmp_s1[i] - tmp_s2[i]);
+	return (len);
 }
